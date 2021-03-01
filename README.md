@@ -44,6 +44,12 @@ pip install wallbox
 
 - resumes a charging session
 
+### getChargersSummery
+- get total chargers summery
+
+### getChargerMonthStats(chargerId)
+- get stats of the months, be aware active sessions are only counted if the session finished
+
 ## Simple example
 
 ```python

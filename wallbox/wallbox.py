@@ -56,6 +56,26 @@ class Wallbox:
             raise (err)
         return json.loads(response.text)
 
+    def getChargersSummery(self):
+        try:
+            response = requests.get(
+                f"{self.baseUrl}v3/sessions/summary", headers=self.headers
+            )
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as err:
+            raise (err)
+        return json.loads(response.text)
+
+    def getChargerMonthStats(self, chargerId):
+        try:
+            response = requests.get(
+                f"{self.baseUrl}v2/charger/{chargerId}/session", headers=self.headers
+            )
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as err:
+            raise (err)
+        return json.loads(response.text)
+
     def unlockCharger(self, chargerId):
         try:
             response = requests.put(
